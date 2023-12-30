@@ -95,7 +95,7 @@ Bizim projemizde ise zamani gelen prosesler once onceliklerine gore siralanirlar
 
 - Bellegin yani sira kaynaklara ve calisma zamanina gore de siralama eklenebilir.
 - 20sn kurali prosesin gelme suresinden ziyade cpu da gecirdigi sureye gore uygulanabilir.
-- 
+
 ## Kuyruk ozellikleri
 ### FCFS.java
 
