@@ -24,7 +24,7 @@ public class niam {
 			GRV.kuyruklariYazdir();
 			
 			//prosesi kuyruğa göre işliyor
-			GRV.calistir(BL);
+			GRV.calistir(BL,GRV);
 			System.out.println("-------------------------------------------------------------------------------------------");
 		} while ( !(BL.prosesler.isEmpty() && GRV.kuyruklarHepsiBosMu()) ) ;
 		

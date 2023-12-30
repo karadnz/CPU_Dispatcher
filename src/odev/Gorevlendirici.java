@@ -19,6 +19,10 @@ public class Gorevlendirici {
 	public Queue<Proses> kullanici2 = new LinkedList<Proses> () ;
 	public Queue<Proses> kullanici3 = new LinkedList<Proses> () ;
 	
+	public FCFS fcfs = new FCFS ();
+	
+	public GBG gbg = new GBG () ;
+	
 	//prosesin kaynaklarının uygun olup olmadığını ölçmek için referanslar
 	static int MAX_gercek_zamanli_bellek = 64 ;
 	static int MAX_kullanici_zamanli_bellek = 960 ;
@@ -139,7 +143,7 @@ public class Gorevlendirici {
 	}
 
 	//çalıştırma fonksiyonu
-	public void calistir ( BeklemeListesi BL ) throws IOException, InterruptedException {
+	public void calistir ( BeklemeListesi BL,Gorevlendirici GRV ) throws IOException, InterruptedException {
 		
 		//eğer herhangi bir kuyruk boş değilse gecen sürey, çalıştırma işleminin sonunda ekrana verir
 		if ( !gercek_zamanli.isEmpty() || !kullanici1.isEmpty() || !kullanici2.isEmpty() || !kullanici3.isEmpty() ) {
@@ -156,92 +160,10 @@ public class Gorevlendirici {
 		
 		//gerçek zamanlı kuyruk boş değilse her zaman burayı çalıştırır
 		if (!gercek_zamanli.isEmpty()) {
-			//kuyruğun başınki prosesi alır
-			Proses prs = gercek_zamanli.peek() ;
-			//kuyruktan prosesi çıkartır
-			gercek_zamanli.poll() ;
-			//gerçek zamanlı olduğu için proses sonlana kadar çalışır ve uygun mesaj verilir
-			for (; prs.proses_zamani > 0; prs.proses_zamani-- ) {
-				System.out.println("saniye :" + Gorevlendirici.gecen_sure);
-				prs.ProsesCalisiyor(gecen_sure++, prs);
-				Thread.sleep(1000);
-				//kuyruklardaki bütün proseslerin gecirilen zamanı artırılır ve 20 saniye yi gecen varsa sonlandırılır
-				zamanArtirHepsinde (BL) ;
-				zamanAsiminaUgramisProsesSonlandir (BL) ;
-			}
-			//biten proses sonlandırılır ve kaynaklar iade edilir
-			prs.ProsesSonlandi(gecen_sure, prs);
-			gercek_zamanli_bellek += prs.Mbayt ;
+			fcfs.FCFS_calistir(gercek_zamanli, BL, GRV);
 		//kullanıcı kuyruk kısmı
-		} else if ( !kullanici1.isEmpty() ) {
-			Proses prs = kullanici1.peek() ;
-			kullanici1.poll() ;
-			//kalan zamanı 1 değilse 1 saniye çalıştırma kısmı
-			if( prs.proses_zamani != 1 ) {
-				System.out.println("saniye :" + Gorevlendirici.gecen_sure);
-				prs.ProsesCalisiyor(gecen_sure++, prs);
-				Thread.sleep(1000);
-				prs.proses_zamani-- ;
-				kullanici2.add(prs);
-				prs.ProsesBeklemede(gecen_sure, prs);
-				zamanArtirHepsinde (BL) ;
-				zamanAsiminaUgramisProsesSonlandir (BL) ;
-			//eğer son 1 saniye kalmışsa çalıştırılıp sonladırılır ve kaynakları iade edilir
-			} else {
-				System.out.println("saniye :" + Gorevlendirici.gecen_sure);
-				prs.ProsesCalisiyor(gecen_sure++, prs);
-				prs.proses_zamani-- ;
-				prs.ProsesSonlandi(gecen_sure, prs);
-				kullanici_zamanli_bellek += prs.Mbayt ;
-				iadeEtKaynaklar(prs.kaynak);
-				zamanArtirHepsinde (BL) ;
-				zamanAsiminaUgramisProsesSonlandir (BL) ;
-			}
-		} else if ( !kullanici2.isEmpty() ) {
-			Proses prs = kullanici2.peek() ;
-			kullanici2.poll() ;
-			if( prs.proses_zamani != 1 ) {
-				System.out.println("saniye :" + Gorevlendirici.gecen_sure);
-				prs.ProsesCalisiyor(gecen_sure++, prs);
-				Thread.sleep(1000);
-				prs.proses_zamani-- ;
-				kullanici3.add(prs);
-				prs.ProsesBeklemede(gecen_sure, prs);
-				zamanArtirHepsinde (BL) ;
-				zamanAsiminaUgramisProsesSonlandir (BL) ;
-			} else {
-				System.out.println("saniye :" + Gorevlendirici.gecen_sure);
-				prs.ProsesCalisiyor(gecen_sure++, prs);
-				prs.proses_zamani-- ;
-				prs.ProsesSonlandi(gecen_sure, prs);
-				kullanici_zamanli_bellek += prs.Mbayt ;
-				iadeEtKaynaklar(prs.kaynak);
-				zamanArtirHepsinde (BL) ;
-				zamanAsiminaUgramisProsesSonlandir (BL) ;
-			}
-			// round robin tarzı çalışan kuyruk
-		} else if ( !kullanici3.isEmpty() ) {
-			Proses prs = kullanici3.peek() ;
-			kullanici3.poll() ;
-			if ( prs.proses_zamani != 1 ) {
-				System.out.println("saniye :" + Gorevlendirici.gecen_sure);
-				prs.ProsesCalisiyor(gecen_sure++, prs);
-				Thread.sleep(1000);
-				prs.proses_zamani--;
-				kullanici3.add(prs) ;
-				prs.ProsesBeklemede(gecen_sure, prs);
-				zamanArtirHepsinde (BL) ;
-				zamanAsiminaUgramisProsesSonlandir (BL) ;
-			} else {
-				System.out.println("saniye :" + Gorevlendirici.gecen_sure);
-				prs.ProsesCalisiyor(gecen_sure++, prs);
-				prs.proses_zamani--;
-				prs.ProsesSonlandi(gecen_sure, prs);
-				kullanici_zamanli_bellek += prs.Mbayt ;
-				iadeEtKaynaklar(prs.kaynak);
-				zamanArtirHepsinde (BL) ;
-				zamanAsiminaUgramisProsesSonlandir (BL) ;
-			}
+		} else if ( !kullanici1.isEmpty() || !kullanici2.isEmpty() || !kullanici3.isEmpty() )  {
+			gbg.GBG_calistir(kullanici1, kullanici2, kullanici3,BL, GRV);
 		}
 	}
 	
