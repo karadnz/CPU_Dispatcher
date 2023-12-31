@@ -125,4 +125,3 @@ kuyrukların çalışmasında bir hiyerarşi mevcuttur. eğer gerçek zamanlı p
 kullanıcı zamanlı kuyrukda da önceliğe göre 3 kuyruğa ayrılmıştır. kuyruklardaki prosesler 1 saniye çalışır ve eğer bitmişse kaynakları ve belleği iade edilir. eğer bitmediyse önceliği ve çalışma süresi 1 azaltılır. eğer  kullanıcı zamanlı 1 ve 2 öncelikli kuyruk boş ise ve kullanıcı zamanlı 3 öncellikli kuyruk dolu ise o zaman burada basit bir çevrimsel RR çalışır. 1 saniye prosesi işler ve kuyruğun sonuna atar. eğer daha yüksek öncelikli bir kuyruğa proses gelirse o zaman öncelikli kuyruk çalışır.
 varış zamanı ile birlikte aktif olan bulunma zamanı 20 saniyeyi aşarsa proses iptal edilir ve eğer kaynakları ve bellekleri varsa iade edilir.
 tüm kuyruklar boş ve kuyruğa yerleşmeyen prosesleri tutan liste boş olursa görevlendirici sonlanır.
-
