@@ -31,27 +31,33 @@ public class Proses {
 	//proses herhangi bir kuyruğa girdiğinde mesajını verir
 	public void ProsesHazir ( int saniye, Proses proses ) throws IOException {
 		
-		System.out.println(renkler[renk]+"proses id = " + proses.proses_id + ", " +"proses varis = "+", " + proses.varis_zamani+ "proses MB = " + proses.Mbayt +", " + "proses kaynaklari = " + proses.kaynak[0]+" "+ proses.kaynak[1]+" " + proses.kaynak[2]+" "+ proses.kaynak[3]+" proses durumu : " +"hazir"+"\u001B[0m");
+		System.out.println(renkler[renk]+"proses id = " + proses.proses_id +", "+"kuyruk = " + proses.oncelik + ", " +"proses varis = "+", " + proses.varis_zamani+ "proses MB = " + proses.Mbayt +", " + "proses kaynaklari : yazici = " + proses.kaynak[0]+" ,tarayici = "+ proses.kaynak[1]+" ,modemler = " + proses.kaynak[2]+" ,CD = "+ proses.kaynak[3]+" proses durumu : " +"hazir"+"\u001B[0m");
 	}
 	
 	//proses herhangi bir kuyrukta çalışıyorsa mesajını verir 
 	public void ProsesCalisiyor ( int saniye, Proses proses ) throws IOException {
 		
-		System.out.println(renkler[renk]+"proses id = " + proses.proses_id+ ", " +"proses varis = "+ proses.varis_zamani+ ", " + "proses MB = " + proses.Mbayt + " ," + "proses kaynaklari = " + proses.kaynak[0]+" "+ proses.kaynak[1]+" " + proses.kaynak[2]+" "+ proses.kaynak[3]+" proses durumu : " +"calisiyor"+"\u001B[0m");
+		System.out.println(renkler[renk]+"proses id = " + proses.proses_id+ ", "+"kuyruk = " + proses.oncelik + ", " +"proses varis = "+ proses.varis_zamani+ ", " + "proses MB = " + proses.Mbayt + " ," + "proses kaynaklari : yazici = " + proses.kaynak[0]+" ,tarayici = "+ proses.kaynak[1]+" ,modemler = " + proses.kaynak[2]+" ,CD = "+ proses.kaynak[3]+" proses durumu : " +"calisiyor"+"\u001B[0m");
 		
 	}
 	
 	//proses herhangi bir kuyrukta çalışması kesintiye uğradıysa mesajını verir
 	public void ProsesBeklemede ( int saniye, Proses proses ) throws IOException, InterruptedException {
 		
-		System.out.println(renkler[renk]+"proses id = " + proses.proses_id+ ", " +"proses varis = "+ proses.varis_zamani+ ", " + "proses MB = " + proses.Mbayt+ ", "  + "proses kaynaklari = " + proses.kaynak[0]+" "+ proses.kaynak[1]+" " + proses.kaynak[2]+" "+ proses.kaynak[3]+" proses durumu : " +"beklemede"+"\u001B[0m");
+		System.out.println(renkler[renk]+"proses id = " + proses.proses_id+ ", " +"kuyruk = " + proses.oncelik + ", "+"proses varis = "+ proses.varis_zamani+ ", " + "proses MB = " + proses.Mbayt+ ", "  + "proses kaynaklari : yazici = " + proses.kaynak[0]+" ,tarayici = "+ proses.kaynak[1]+" ,modemler = " + proses.kaynak[2]+" ,CD = "+ proses.kaynak[3]+" proses durumu : " +"beklemede"+"\u001B[0m");
 		
 	}
 	
 	//proses herhangi bir kuyrukta çalışması sonlandıysa mesajını verir
 	public void ProsesSonlandi ( int saniye, Proses proses ) throws IOException {
 		
-		System.out.println(renkler[renk]+"proses id = " + proses.proses_id+ ", " +"proses varis = "+ proses.varis_zamani+ ", " + "proses MB = " + proses.Mbayt+ ", " + "proses kaynaklari = " + proses.kaynak[0]+" "+ proses.kaynak[1]+" " + proses.kaynak[2]+" "+ proses.kaynak[3]+" proses durumu : " +"Sonlandi"+"\u001B[0m");
+		System.out.println(renkler[renk]+"proses id = " + proses.proses_id+ ", "+"kuyruk = " + proses.oncelik + ", " +"proses varis = "+ proses.varis_zamani+ ", " + "proses MB = " + proses.Mbayt+ ", " + "proses kaynaklari : yazici = " + proses.kaynak[0]+" ,tarayici = "+ proses.kaynak[1]+" ,modemler = " + proses.kaynak[2]+" ,CD = "+ proses.kaynak[3]+" proses durumu : " +"Sonlandi"+"\u001B[0m");
+		
+	}
+	
+	public void ProsesSilindi ( int saniye, Proses proses ) throws IOException {
+		
+		System.out.println(renkler[renk]+"proses id = " + proses.proses_id+ ", " +"proses varis = "+ proses.varis_zamani+ ", " + "proses MB = " + proses.Mbayt+ ", " + "proses kaynaklari : yazici = " + proses.kaynak[0]+" ,tarayici = "+ proses.kaynak[1]+" ,modemler = " + proses.kaynak[2]+" ,CD = "+ proses.kaynak[3]+" proses durumu : " +"Silindi"+"\u001B[0m");
 		
 	}
 	

@@ -18,6 +18,7 @@ public class GBG {
 			Thread.sleep(1000);
 			prs.proses_zamani-- ;
 			kullanici2.add(prs);
+			prs.oncelik++ ;
 			prs.ProsesBeklemede(Gorevlendirici.gecen_sure, prs);
 			GRV.zamanArtirHepsinde (BL) ;
 			GRV.zamanAsiminaUgramisProsesSonlandir (BL) ;
@@ -41,6 +42,7 @@ public class GBG {
 			Thread.sleep(1000);
 			prs.proses_zamani-- ;
 			kullanici3.add(prs);
+			prs.oncelik++ ;
 			prs.ProsesBeklemede(Gorevlendirici.gecen_sure, prs);
 			GRV.zamanArtirHepsinde (BL) ;
 			GRV.zamanAsiminaUgramisProsesSonlandir (BL) ;

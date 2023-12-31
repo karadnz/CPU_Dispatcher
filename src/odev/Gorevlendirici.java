@@ -58,8 +58,7 @@ public class Gorevlendirici {
 		    	
 		    	//kaynak ve bellek MAX değerlerini aşarsa onu listeden kaldırırız yoksa şuan anda kuyruklarda olmayan listeyi tutan listeye atarız
 		        if (!maxKaynakVeBellekBak(proses)) {
-		            System.out.print("max kaynagı veya bellegi asar ::");
-		            proses.ProsesSonlandi(gecen_sure, proses);
+		            proses.ProsesSilindi(gecen_sure, proses);
 		            iterator.remove();
 		        } else {
 		            yeniListe.add(proses);
@@ -126,16 +125,23 @@ public class Gorevlendirici {
 	
 	//MAX kaynak ve belleğe göre uygunluğuna bakar
 	private boolean maxKaynakVeBellekBak(Proses prs) {
-		if ( !prs.KaynagaBak(MAX_kaynak) ) {
-			return false ;
-		}
 		if ( prs.oncelik != 0 ) {
 			if ( prs.Mbayt > MAX_kullanici_zamanli_bellek ) {
+				System.out.println("HATA - kullanici zamanli proses 960 MB dan fazla bellek istiyor.");
+				return false ;
+			}
+			if ( !prs.KaynagaBak(MAX_kaynak) ) {
+				System.out.println("HATA - kullanici zamanli proses fazla kaynak talep ediyor.");
 				return false ;
 			}
 			return true ;
 		} else {
 			if ( prs.Mbayt > MAX_gercek_zamanli_bellek ) {
+				System.out.println("HATA - gercek zamanli proses 64 MB den fazla bellek istiyor.");
+				return false ;
+			}
+			if ( !prs.KaynagaBak(MAX_kaynak) ) {
+				System.out.println("HATA - gercek zamanli proses kaynak talep ediyor.");
 				return false ;
 			}
 			return true ;
