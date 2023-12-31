@@ -1,4 +1,4 @@
-# Isletim Sistemleri Odevi - Grup 38
+# İşletim Sistemleri Ödevi- Grup 38
 
 ## Dersi verenler
 - Dr.Öğr.Üyesi Abdullah SEVİN
@@ -6,7 +6,7 @@
 
 ## Grup uyeleri - Grup 38
 - 2B - G211210066 - Mustafa KARADENİZ
-- 2B - G211210042 - Mustafa Haci BARAN
+- 2B - G211210042 - Mustafa Hacı BARAN
 - 2C - G201210076 - Muhammet Efdal ŞAHİN
 - 2C - G221210382 - Yetgin AKCAN
 - 1B - B231210501 - Necmi ERTÜRK
@@ -84,37 +84,37 @@ Bizim projemizde ise zamani gelen prosesler once onceliklerine gore siralanirlar
 
 ## Program yapısının ve bireysel modüllerin tanımı ve gerekçesi
 
-- **Proses.java**: Prosesin bilgilerini ve durumlarini yazdiran fonksiyonlari bulunduran sinif.
-- **BeklemeListesi.java**: Dosyadan prosesleri okuyan ve listede tutan sinif.
-- **Gorevlendirici.java**: Kaynaklari/bellekleri guncelleyen, kaynak/bellek kontrolu yapan, proseslere gereken kaynaklari/bellekleri atayan, zamani gelen prosesleri bulan ve uygun kuyruklara atayan sinif.
-- **FCFS.java**: Gercek zamanli prosesleri calistiran kuyruklarin uzerinde islem yapan sinif.
-- **GBG.java**: Kullanici proseslerini calistiran kuyruklarin uzerinde islem yapan sinif.
-- **RR.java**: En dusuk oncelikli kuyrugu RoundRobin calistiran sinif.
+- **Proses.java**: Prosesin bilgilerini ve durumlarini yazdiran fonksiyonlari bulunduran sınıf.
+- **BeklemeListesi.java**: Dosyadan prosesleri okuyan ve listede tutan sınıf.
+- **Gorevlendirici.java**: Kaynakları/bellekleri güncelleyen, kaynak/bellek kontrolü yapan, proseslere gereken kaynakları/bellekleri atayan, zamanı gelen prosesleri bulan ve uygun kuyruklara atayan sınıf.
+- **FCFS.java**: Gerçek zamanlı prosesleri çalıştıran kuyrukların üzerinde işlem yapan sınıf.
+- **GBG.java**: Kullanıcı proseslerini çalıştıran kuyrukların üzerinde işlem yapan sınıf.
+- **RR.java**: En düşük öncelikli kuyruğu RoundRobin çalıştıran sınıf.
 
 ## Görevlendiricinin eksiklikleri ve olası iyileştirmeler
 
-- Bellegin yani sira kaynaklara ve calisma zamanina gore de siralama eklenebilir.
-- 20sn kurali prosesin gelme suresinden ziyade cpu da gecirdigi sureye gore uygulanabilir.
+- Belleğin yanı sıra kaynaklara ve çalışma zamanına göre de sıralama eklenebilir.
+- 20 saniye kuralı prosesin gelme süresinden ziyade cpu da geçirdiği süreye göre uygulanabilir.
 
-## Kuyruk ozellikleri
+## Kuyruk özellikleri
 ### FCFS.java
 
-- FCFS Gercek zamanli prosesler icin kullanildi.
-- Kuyrugun basindaki proses isleme sokuldu.
-- Islem bitene kadar bekledi ve islem bittikten sonra bellegi geri iade etti.
+- FCFS Gerçek zamanlı prosesler icin kullanıldı.
+- Kuyruğun başındaki proses işleme sokuldu.
+- İşlem bitene kadar bekledi ve işlem bittikten sonra belleği geri iade etti.
 
 ### GBG.java
 
-- Eger Gercek Zamanli kuyruk bos ise calisir.
-- Bos olmayan en yuksek oncelikli siralayici calisir.
-- 1sn calisir ve proses zamanini azaltir ve prosesin onceligini dusurur.
+- Eger Gerçek Zamanlı kuyruk boş ise çalışır.
+- Boş olmayan en yuksek öncelikli sıralayıcı çalışır.
+- 1 saniye çalışır ve proses zamanını azaltır ve prosesin önceliğini düşürür.
 
 ### RR.java
 
-- Eger Gercek Zamanli kuyruk ve diger kullanici kuyruklari bos ise calisir.
-- Diger kuyruklara proses gelene kadar kuyruktaki prosesleri isler.
+- Eger Gerçek Zamanlı kuyruk ve diğer kullanıcı kuyrukları boş ise çalışır.
+- Diğer kuyruklara proses gelene kadar kuyruktaki prosesleri işler.
 
-## Diger Isletim sistemleriyle karsilastirma
+## Diger İşletim sistemleriyle karsilastirma
 
 Hem Linux hem de Windows'ta, işletim sisteminin çekirdeği, daha sonra hangi işlemin yürütüleceğini seçmekten sorumlu olan bir görevlendirici içerir. Bir işlem çalışmaya hazır olduğunda, hazır işlemler kuyruğuna alınır. Görevlendirici, kuyruğun önündeki işlemi seçer ve CPU'yu bu işleme tahsis eder. Bu işlem, yürütmeyi bitirene veya bazı kaynakları beklerken bloke edilene kadar devam eder. İşlem yürütmeyi bitirdiğinde veya bloke edildiğinde, dağıtıcı kuyruktaki bir sonraki işlemi seçer ve CPU'yu buna tahsis eder.
 Linux ve Windows çekirdekleri arasındaki temel farklardan biri, Linux'un tamamen önleyici bir zamanlayıcı kullanmasıdır; bu, çekirdeğin, CPU'yu farklı bir işleme vermek için herhangi bir zamanda çalışan bir işlemi kesebileceği anlamına gelir. Buna karşılık, Windows çekirdeği yalnızca kısmen önleyicidir, yani bir işlemi yalnızca belirli koşullar altında, örneğin
@@ -124,5 +124,5 @@ Bununla beraber bizim yazdığımız Dispatcher sınıfı, varış zamanı geçe
 kuyrukların çalışmasında bir hiyerarşi mevcuttur. eğer gerçek zamanlı proseslerin tutulduğu kuyruk boş değil ise her zaman burası çalışır, eğer mevcut çalışan kullanıcı zamanlı proses varsa kesintiye uğrarar ve gerçek zamanlı kuyruktaki prosesin bitmesini bekler. gerçek zamanlı prosesler, proses bitene kadar çalışır. 
 kullanıcı zamanlı kuyrukda da önceliğe göre 3 kuyruğa ayrılmıştır. kuyruklardaki prosesler 1 saniye çalışır ve eğer bitmişse kaynakları ve belleği iade edilir. eğer bitmediyse önceliği ve çalışma süresi 1 azaltılır. eğer  kullanıcı zamanlı 1 ve 2 öncelikli kuyruk boş ise ve kullanıcı zamanlı 3 öncellikli kuyruk dolu ise o zaman burada basit bir çevrimsel RR çalışır. 1 saniye prosesi işler ve kuyruğun sonuna atar. eğer daha yüksek öncelikli bir kuyruğa proses gelirse o zaman öncelikli kuyruk çalışır.
 varış zamanı ile birlikte aktif olan bulunma zamanı 20 saniyeyi aşarsa proses iptal edilir ve eğer kaynakları ve bellekleri varsa iade edilir.
-tüm kuyruklar boş ve kuyruğa yerleşmeyen prosesleri tutan liste boş olursa görevlendirici sonlanır
+tüm kuyruklar boş ve kuyruğa yerleşmeyen prosesleri tutan liste boş olursa görevlendirici sonlanır.
 
